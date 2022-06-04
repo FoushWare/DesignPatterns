@@ -1,3 +1,21 @@
+// The blow code is  a singleton pattern. but it is not a good practice. it's anti-pattern. in Javascript becasue we can create
+// a new object with the same prototype. without classes 🚀
+// const counter = {
+// 	count: 0,
+// 	getCount: function () {
+// 		return this.count;
+// 	},
+// 	increment: function () {
+// 		this.count++;
+// 	},
+// 	decrement: function () {
+// 		this.count--;
+// 	}
+// };
+// Object.freeze(counter);
+// export { counter };
+
+
 let instance;
 let counter = 0;
 
@@ -25,7 +43,6 @@ class Counter {
 		return --counter;
 	}
 }
-
-const counter1 = new Counter();
-const counter2 = new Counter();
-// Error: You can only create one instance!
+// Freeze the instance to prevent further changes
+const SingleTonCounter = Object.freeze(new Counter());
+export default SingleTonCounter;
